@@ -132,7 +132,8 @@ containers.forEach((container, index) => {
   }
   else {
     tl2.from(`.text${index+1}`, {
-      autoAlpha: 0
+      // autoAlpha: 0
+      x: 500
     }).to(
       `.text${index+1}`,
       {
