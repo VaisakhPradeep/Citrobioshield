@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="accordion.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <title>Document</title>
+</head>
+
+<body>
+  <section class="container">
+    <canvas id="hero-lightpass">
+    </canvas>
+    <div id="shadow"></div>
+  </section>
+  <section class="hero">
+    <div class="bg-texture"></div>
+    <img class="bg-peel" src="./images/peel.png"></img>
+    <div class="leaves" id="scene">
+      <div class="leaf" data-depth="1.2">
+        <img id="leaf1" src="./images/leaf1.png"></img>
+      </div>
+      <div class="leaf" data-depth="0.4">
+        <img id="leaf2" src="./images/leaf2.png"></img>
+      </div>
+      <div class="leaf" data-depth="0.4">
+        <img id="leaf3" src="./images/leaf3.png"></img>
+      </div>
+      <div class="leaf" data-depth="0.2">
+        <img id="leaf4" src="./images/leaf4.png"></img>
+      </div>
+
+    </div>
+    <div class="main-text">
+      <h1>Citrobioshield</h1>
+      <h2>Natural & Organic Antimicrobial</h2>
+    </div>
+  </section>
+
+  <section class="intro-spacer">
+  </section>
+
+  <section class="intro-container">
+    <!-- <div class="background">
+    </div> -->
+    <div class="intro-content">
+      <img src="./images/bg-leaf1.png" id="bg-leaf1" alt="">
+      <img src="./images/bg-leaf2.png" id="bg-leaf2" alt="">
+      <div class="circle"></div>
+      <div class="main-text">
+        <h4 class="text">ABOUT US</h4>
+        <h2 class="heading">Introducing <br /> <span>Citrobioshield</span></h2>
+        <div class="card">
+          <p class="text1"><span></span>India's only Natural and Organic Antimicrobial brand which is lab certified and
+            hospital tested with high germ
+            killing effect
+          </p>
+          <p class="text2"><span></span>An Antimicrobial that does not contain any toxic or harmful chemicals.
+          </p>
+          <p class="text3"><span></span>Kills 99.999% of Viruses, Bacteria, Spores, Fungi and Mold.
+          </p>
+          <p class="text4"><span></span>Can be used as a multipurpose body, surface and food disinfectant
+          </p>
+        </div>
+      </div>
+      <div class="text-container">
+      </div>
+      <div class="text-container">
+      </div>
+      <div class="text-container">
+      </div>
+      <div class="text-container last-text">
+      </div>
+      <!-- <div class="spacer"></div> -->
+    </div>
+  </section>
+
+  <section class="features">
+    <h2>Features</h2>
+    <img src="./images/bg-orange1.png" id="bg-orange1" alt="">
+    <img src="./images/bg-orange2.png" id="bg-orange2" alt="">
+    <div class="feature-wrapper">
+      <div class="feature-container">
+        <img src="./images/feature1.png" alt="">
+        <h4>NON-TOXIC</h4>
+        <p>Completely free from harmful chemicals</p>
+      </div>
+      <div class="feature-container">
+        <img src="./images/feature2.png" alt="">
+        <h4>NON-FLAMMABLE</h4>
+        <p>Safe to use in indoor and outdoor</p>
+      </div>
+      <div class="feature-container">
+        <img src="./images/feature3.png" alt="">
+        <h4>ALCOHOL FREE</h4>
+        <p>Our product contains 0% alcohol</p>
+      </div>
+      <div class="feature-container">
+        <img src="./images/feature4.png" alt="">
+        <h4>NON-IRRITANT</h4>
+        <p>Free of harsh chemicals and efficiently maintains the skin’s pH levels</p>
+      </div>
+      <div class="feature-container">
+        <img src="./images/feature5.png" alt="">
+        <h4>NON-CORROSIVE</h4>
+        <p> Disinfect metal surfaces without worrying about corrosion</p>
+      </div>
+      <div class="feature-container">
+        <img src="./images/feature6.png" alt="">
+        <h4>ODOURLESS</h4>
+        <p>Say goodbye to strong smell</p>
+      </div>
+      <div class="feature-container">
+        <img src="./images/feature7.png" alt="">
+        <h4>NATURAL</h4>
+        <p>Contains only ingredients that are 100% natural</p>
+      </div>
+      <div class="feature-container">
+        <img src="./images/feature8.png" alt="">
+        <h4>ECO-FRIENDLY</h4>
+        <p>Manufactured sustainably and are safe for the environment</p>
+      </div>
+      <div class="feature-container">
+        <img src="./images/feature9.png" alt="">
+        <h4>ORGANIC</h4>
+        <p>Made using FDA's GRAS listed natural & organic ingredients</p>
+      </div>
+    </div>
+    <div class="amazon-btn">
+      <img src="./images/amazon.png" alt="">
+    </div>
+  </section>
+
+  <section class="myths-facts-container">
+    <h2>Myths & <span>Facts</span></h2> 
+    <div class="card">
+      <div class="myth">
+        <h4>MYTH 1</h4>
+        <p>99.9% to 99.9999% . It's all the same.</p>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g data-name="Layer 2"><path d="M10.5 17a1 1 0 0 1-.71-.29 1 1 0 0 1 0-1.42L13.1 12 9.92 8.69a1 1 0 0 1 0-1.41 1 1 0 0 1 1.42 0l3.86 4a1 1 0 0 1 0 1.4l-4 4a1 1 0 0 1-.7.32z" data-name="chevron-right"/></g></svg>
+      </div>
+      <div class="fact">
+        <h4 class="fact-label">FACT</h4>
+        <p class="fact-text">Efficacy(kill rate) of a product is measured by its log reduction. 99.9 is 3 log reduction & 99.9999% is 6 log reduction.The term “log reduction” indicates a 10-fold reduction. 
+          <br><br>
+          <strong>If there are one million bacteria present on a surface, </strong><br>
+          1 log reduction would reduce bacteria by 90%/ 100,000 bacteria remaining
+          2 log reduction removes 99 percent, leaving behind 10,000 bacteria
+          3-log removes 99.9 percent to leave behind 1,000 bacteria
+          6-log leaves behind only one cell in one million. With CBS you are shielded. 
+          </p>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g data-name="Layer 2"><path d="M10.5 17a1 1 0 0 1-.71-.29 1 1 0 0 1 0-1.42L13.1 12 9.92 8.69a1 1 0 0 1 0-1.41 1 1 0 0 1 1.42 0l3.86 4a1 1 0 0 1 0 1.4l-4 4a1 1 0 0 1-.7.32z" data-name="chevron-right"/></g></svg>
+      </div>
+    </div>
+    <div class="card">
+      <div class="myth">
+        <h4>MYTH 2</h4>
+        <p> Only Alcohol based sanitizers can kill germs</p>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g data-name="Layer 2"><path d="M10.5 17a1 1 0 0 1-.71-.29 1 1 0 0 1 0-1.42L13.1 12 9.92 8.69a1 1 0 0 1 0-1.41 1 1 0 0 1 1.42 0l3.86 4a1 1 0 0 1 0 1.4l-4 4a1 1 0 0 1-.7.32z" data-name="chevron-right"/></g></svg>
+      </div>
+      <div class="fact">
+        <h4 class="fact-label">FACT</h4>
+        <p class="fact-text">While it is proven that alcohol kills germs, there is also substantial evidence that bioflavonoid based sanitisers kill germs with better efficacy/kill rate. 
+          </p>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g data-name="Layer 2"><path d="M10.5 17a1 1 0 0 1-.71-.29 1 1 0 0 1 0-1.42L13.1 12 9.92 8.69a1 1 0 0 1 0-1.41 1 1 0 0 1 1.42 0l3.86 4a1 1 0 0 1 0 1.4l-4 4a1 1 0 0 1-.7.32z" data-name="chevron-right"/></g></svg>
+      </div>
+    </div>
+    <div class="card">
+      <div class="myth">
+        <h4>MYTH 2</h4>
+        <p>Odour/fragrance should be there in a sanitiser</p>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g data-name="Layer 2"><path d="M10.5 17a1 1 0 0 1-.71-.29 1 1 0 0 1 0-1.42L13.1 12 9.92 8.69a1 1 0 0 1 0-1.41 1 1 0 0 1 1.42 0l3.86 4a1 1 0 0 1 0 1.4l-4 4a1 1 0 0 1-.7.32z" data-name="chevron-right"/></g></svg>
+      </div>
+      <div class="fact">
+        <h4 class="fact-label">FACT</h4>
+        <p class="fact-text">Odour reduces the efficacy of the sanitiser. Odourless sanitiser ensures better germ killing rate.
+          </p>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g data-name="Layer 2"><path d="M10.5 17a1 1 0 0 1-.71-.29 1 1 0 0 1 0-1.42L13.1 12 9.92 8.69a1 1 0 0 1 0-1.41 1 1 0 0 1 1.42 0l3.86 4a1 1 0 0 1 0 1.4l-4 4a1 1 0 0 1-.7.32z" data-name="chevron-right"/></g></svg>
+      </div>
+    </div>
+    <div class="card">
+      <div class="myth">
+        <h4>MYTH 2</h4>
+        <p>Products containing words like bio / eco are organic products.</p>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g data-name="Layer 2"><path d="M10.5 17a1 1 0 0 1-.71-.29 1 1 0 0 1 0-1.42L13.1 12 9.92 8.69a1 1 0 0 1 0-1.41 1 1 0 0 1 1.42 0l3.86 4a1 1 0 0 1 0 1.4l-4 4a1 1 0 0 1-.7.32z" data-name="chevron-right"/></g></svg>
+      </div>
+      <div class="fact">
+        <h4 class="fact-label">FACT</h4>
+        <p class="fact-text">Most products just contain one/ two organic ingredients and the rest of the composition contains chemicals. Please check the ingredients before you buy an organic product.
+          </p>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g data-name="Layer 2"><path d="M10.5 17a1 1 0 0 1-.71-.29 1 1 0 0 1 0-1.42L13.1 12 9.92 8.69a1 1 0 0 1 0-1.41 1 1 0 0 1 1.42 0l3.86 4a1 1 0 0 1 0 1.4l-4 4a1 1 0 0 1-.7.32z" data-name="chevron-right"/></g></svg>
+      </div>
+    </div>
+    <div class="accordion-container">
+
+      <div class="accordion accordion2 v2">
+        <div class="a-container hover-container">
+          <div class="a-btn">
+            <div class="btn-content">
+              Can I use Citrobioshield as a Sanitizer? 
+            </div>
+            <span></span></div>
+          <div class="a-panel">
+            <div class="panel-content">
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium minima dolores assumenda id.
+                Porro consequuntur at dolor eum, neque labore!</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur non sint sequi ipsa laudantium, a
+                iure rem vel nemo soluta temporibus, consectetur at corrupti aspernatur maxime, iusto neque
+                blanditiis deleniti.</p>
+            </div>
+          </div>
+        </div>
+        <div class="a-container hover-container">
+          <div class="a-btn">Can I use Citrobioshield as a Disinfectant? <span></span></div>
+          <div class="a-panel">
+            <div class="panel-content">
+              <h4>Lorem ipsum dolor sit amet.</h4>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium minima dolores assumenda id.
+                Porro consequuntur at dolor eum, neque labore!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="faq-container">
+    <h2>FAQs</h2>
+
+    <div class="accordion-container">
+
+      <div class="accordion v1">
+        <div class="a-container">
+          <p class="a-btn">Can I use Citrobioshield as a Sanitizer? <span></span></p>
+          <div class="a-panel">
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium minima dolores assumenda id.
+              Porro consequuntur at dolor eum, neque labore!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur non sint sequi ipsa laudantium, a
+              iure rem vel nemo soluta temporibus, consectetur at corrupti aspernatur maxime, iusto neque
+              blanditiis deleniti.</p>
+          </div>
+        </div>
+        <div class="a-container">
+          <p class="a-btn">Can I use Citrobioshield as a Disinfectant? <span></span></p>
+          <div class="a-panel">
+            <h4>Lorem ipsum dolor sit amet.</h4>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium minima dolores assumenda id.
+              Porro consequuntur at dolor eum, neque labore!</p>
+          </div>
+        </div>
+        <div class="a-container">
+          <p class="a-btn">What is an antimicrobial? <span></span></p>
+          <div class="a-panel">
+            <h4>Lorem ipsum dolor sit amet.</h4>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium minima dolores assumenda id.
+              Porro consequuntur at dolor eum, neque labore!</p>
+            <h4>Lorem ipsum dolor sit amet.</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur non sint sequi ipsa laudantium, a
+              iure rem vel nemo soluta temporibus, consectetur at corrupti aspernatur maxime, iusto neque
+              blanditiis deleniti.</p>
+          </div>
+        </div>
+        <div class="a-container">
+          <p class="a-btn">If there is no alcohol, how are germs killed? <span></span></p>
+          <div class="a-panel">
+            <h4>Lorem ipsum dolor sit amet.</h4>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium minima dolores assumenda id.
+              Porro consequuntur at dolor eum, neque labore!</p>
+            <h4>Lorem ipsum dolor sit amet.</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur non sint sequi ipsa laudantium, a
+              iure rem vel nemo soluta temporibus, consectetur at corrupti aspernatur maxime, iusto neque
+              blanditiis deleniti.</p>
+          </div>
+        </div>
+        <div class="a-container">
+          <p class="a-btn">Can I spray CBS in my mouth? <span></span></p>
+          <div class="a-panel">
+            <h4>Lorem ipsum dolor sit amet.</h4>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium minima dolores assumenda id.
+              Porro consequuntur at dolor eum, neque labore!</p>
+            <h4>Lorem ipsum dolor sit amet.</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur non sint sequi ipsa laudantium, a
+              iure rem vel nemo soluta temporibus, consectetur at corrupti aspernatur maxime, iusto neque
+              blanditiis deleniti.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"
+  integrity="sha512-UxP+UhJaGRWuMG2YC6LPWYpFQnsSgnor0VUF3BHdD83PS/pOpN+FYbZmrYN+ISX8jnvgVUciqP/fILOXDjZSwg=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"
+  integrity="sha512-DlTk2PLUinhBupE89kHOJTt11QqbRMQVlbb26XVDvp4D1kt0fRvQJslvZnTelRJHq6yK0tIPCR7cul8+9Blz0g=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="./js/main.js"></script>
+<script src="./js/accordion.js"></script>
+
+
+</html>
