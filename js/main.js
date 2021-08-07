@@ -57,8 +57,8 @@ const changeShadow = scale => {
 }
 
 const moveCanvas = val => {
-  let x = 28*(val/1200)
-  if(x<=28){
+  let x = 30*(val/1200)
+  if(x<=30){
     canvas.style.top = `${56 - x}%`;
   }
 }
@@ -66,7 +66,12 @@ const moveCanvas = val => {
 window.addEventListener('scroll', () => {
   const scrollTop = html.scrollTop;
   // console.log(html.scrollHeight)
-  const maxScrollTop = 2000  - window.innerHeight;
+  let scrollDuration = 2000;
+  if(window.innerWidth <= 644){
+    scrollDuration = 1200;
+  }
+
+  const maxScrollTop = scrollDuration  - window.innerHeight;
   const scrollFraction = scrollTop / maxScrollTop;
   const frameIndex = Math.min(
     frameCount - 1,
