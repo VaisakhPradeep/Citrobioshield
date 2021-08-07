@@ -59,6 +59,19 @@ canvas{
     z-index: 100;
 }
 
+#mobile-image img{
+    position: fixed;
+    width: 500px;
+    top: 50%;
+    right: 0%;
+    transform: translate(0%, -50%) rotate(0deg);
+    max-width: 100vw;
+    max-height: 100vh;
+    z-index: 100;
+    display: none;
+}
+
+
 #shadow {
     position: fixed;
     width: 100px;
@@ -577,6 +590,10 @@ canvas{
     canvas{
         top: 56%;
         transform: translate(13%, -50%) scale(1);
+        display: none;
+    }
+    #mobile-image img {
+        display: block;
     }
     #shadow {
         top: 34%;

@@ -1,5 +1,6 @@
 const html = document.documentElement;
 const canvas = document.getElementById("hero-lightpass");
+const bottleImg = document.querySelector("#mobile-image img");
 const shadow = document.getElementById("shadow");
 const context = canvas.getContext("2d");
 const width = 1080;
@@ -63,15 +64,24 @@ const moveCanvas = val => {
   }
 }
 
+const imageTrasition = val => {
+  let x = 30*(val/1200)
+  let a = 35.5*(val/1200)
+  let r = 13*(val/1200)
+  if(x<=30){
+    bottleImg.style.top = `${56 - x}%`;
+  }
+  if(a<=35.5) {
+    bottleImg.style.transform = `translate(0%, -50%) rotate(-${a}deg)`;
+  }
+  if(r<=13) {
+    bottleImg.style.right = `${r}%`;
+  }
+}
+
 window.addEventListener('scroll', () => {
   const scrollTop = html.scrollTop;
-  // console.log(html.scrollHeight)
-  let scrollDuration = 2000;
-  if(window.innerWidth <= 644){
-    scrollDuration = 1200;
-  }
-
-  const maxScrollTop = scrollDuration  - window.innerHeight;
+  const maxScrollTop = 2000  - window.innerHeight;
   const scrollFraction = scrollTop / maxScrollTop;
   const frameIndex = Math.min(
     frameCount - 1,
@@ -82,13 +92,14 @@ window.addEventListener('scroll', () => {
   changeShadow(frameIndex);
 
   if(window.innerWidth <= 644){
-    moveCanvas(scrollTop);
+    imageTrasition(scrollTop)
   }
 
   requestAnimationFrame(() => updateImage(frameIndex + 1))
 });
 
 preloadImages()
+imageTrasition(0);
 changeShadow(0);
 
 
@@ -162,6 +173,21 @@ let tl3 = gsap.timeline({
 tl3.to("#shadow", {
   autoAlpha: 0
 }).to("#hero-lightpass", {
+  autoAlpha: 0,
+  duration: 0.2
+})
+
+let tl4 = gsap.timeline({
+  scrollTrigger: {
+    // markers: true,
+    trigger: ".last-text",
+    start: "top bottom", 
+    end: "bottom",
+    toggleActions: "play none none reverse"
+  }
+});
+
+tl4.to("#mobile-image", {
   autoAlpha: 0,
   duration: 0.2
 })
