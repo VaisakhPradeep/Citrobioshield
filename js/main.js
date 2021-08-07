@@ -64,20 +64,20 @@ const moveCanvas = val => {
   }
 }
 
-const imageTrasition = val => {
-  let x = 30*(val/1200)
-  let a = 35.5*(val/1200)
-  let r = 13*(val/1200)
-  if(x<=30){
-    bottleImg.style.top = `${56 - x}%`;
-  }
-  if(a<=35.5) {
-    bottleImg.style.transform = `translate(0%, -50%) rotate(-${a}deg)`;
-  }
-  if(r<=13) {
-    bottleImg.style.right = `${r}%`;
-  }
-}
+// const imageTrasition = val => {
+//   let x = 30*(val/1200)
+//   let a = 35.5*(val/1200)
+//   let r = 13*(val/1200)
+//   if(x<=30){
+//     bottleImg.style.top = `${56 - x}%`;
+//   }
+//   if(a<=35.5) {
+//     bottleImg.style.transform = `translate(0%, -50%) rotate(-${a}deg)`;
+//   }
+//   if(r<=13) {
+//     bottleImg.style.right = `${r}%`;
+//   }
+// }
 
 window.addEventListener('scroll', () => {
   const scrollTop = html.scrollTop;
@@ -92,14 +92,14 @@ window.addEventListener('scroll', () => {
   changeShadow(frameIndex);
 
   if(window.innerWidth <= 644){
-    imageTrasition(scrollTop)
+    // imageTrasition(scrollTop)
   }
 
   requestAnimationFrame(() => updateImage(frameIndex + 1))
 });
 
 preloadImages()
-imageTrasition(0);
+// imageTrasition(0);
 changeShadow(0);
 
 
@@ -192,4 +192,20 @@ tl4.to("#mobile-image", {
   duration: 0.2
 })
 
+var rotate = gsap.timeline({
+  scrollTrigger:{
+    trigger: ".image-wrap",
+    pin: true,
+    scrub:0.2,
+    start: 'top top',
+    end:'+=1000',
+    markers: true
+  }
+})
+.to('#mobile-image img', {
+  y: -148,
+  x: -50,
+  rotation: -35.5,
+  duration:1, ease:'none',
+})
 
