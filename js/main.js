@@ -146,10 +146,10 @@ containers.forEach((container, index) => {
 
 let tl3 = gsap.timeline({
   scrollTrigger: {
-    // markers: true,
+    markers: true,
     trigger: ".last-text",
-    start: "top center", 
-    end: "top",
+    start: "top bottom", 
+    end: "bottom",
     toggleActions: "play none none reverse"
   }
 });
@@ -157,7 +157,8 @@ let tl3 = gsap.timeline({
 tl3.to("#shadow", {
   autoAlpha: 0
 }).to("#hero-lightpass", {
-  autoAlpha: 0
+  autoAlpha: 0,
+  duration: 0.2
 })
 
 

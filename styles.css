@@ -228,6 +228,7 @@ canvas{
     letter-spacing: 0.02em;
     z-index: 2;
     padding: 0 20%;
+    padding-bottom: 2rem;
 }
 
 .intro-content .main-text{
@@ -323,7 +324,7 @@ canvas{
     width: 30%;
     margin: 32px 0;
     text-align: center;
-    justify-content: center;
+    justify-content: start;
     color: #636363;
 }
 
