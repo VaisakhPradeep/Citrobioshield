@@ -4,10 +4,21 @@ const shadow = document.getElementById("shadow");
 const context = canvas.getContext("2d");
 const width = 1080;
 const height = 1400;
-
 const frameCount = 59;
+let imageExtension = 'webp'
+
+// Check webp support
+Modernizr.on('webp', function(result) {
+  if (result) {
+    imageExtension = 'webp'
+  } else {
+    imageExtension = 'png'
+  }
+});
+
+
 const currentFrame = index => (
-  `./images/sequence/${index.toString()}.webp`
+  `./images/sequence/${index.toString()}.${imageExtension}`
 )
 
 const preloadImages = () => {
@@ -16,6 +27,7 @@ const preloadImages = () => {
     img.src = currentFrame(i);
   }
 };
+
 
 const img = new Image()
 img.src = currentFrame(1);
@@ -45,8 +57,9 @@ const changeShadow = scale => {
 }
 
 const moveCanvas = val => {
-  if(val<=28){
-    canvas.style.top = `${56 - val}%`;
+  let x = 28*(val/1200)
+  if(x<=28){
+    canvas.style.top = `${56 - x}%`;
   }
 }
 
@@ -60,10 +73,11 @@ window.addEventListener('scroll', () => {
     Math.ceil(scrollFraction * frameCount)
   );
 
+
   changeShadow(frameIndex);
 
   if(window.innerWidth <= 644){
-    moveCanvas(frameIndex);
+    moveCanvas(scrollTop);
   }
 
   requestAnimationFrame(() => updateImage(frameIndex + 1))
