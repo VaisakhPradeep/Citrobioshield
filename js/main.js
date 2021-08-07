@@ -198,8 +198,7 @@ var rotate = gsap.timeline({
     pin: true,
     scrub:0.2,
     start: 'top top',
-    end:'+=1000',
-    markers: true
+    end:'+=1000'
   }
 })
 .to('#mobile-image img', {
