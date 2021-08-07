@@ -108,17 +108,17 @@ var parallaxInstance = new Parallax(scene, {
 });
 
 
-let tl = gsap.timeline({
-  // yes, we can add it to an entire timeline!
-  scrollTrigger: {
-    // markers: true,
-    trigger: ".intro-content",
-    pin: true, 
-    start: "top", // when the top of the trigger hits the top of the viewport
-    end: "+2000", // end after scrolling 500px beyond the start
-    // scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-  }
-});
+// let tl = gsap.timeline({
+//   // yes, we can add it to an entire timeline!
+//   scrollTrigger: {
+//     // markers: true,
+//     trigger: ".intro-content",
+//     pin: true, 
+//     start: "top", // when the top of the trigger hits the top of the viewport
+//     end: "+2000", // end after scrolling 500px beyond the start
+//     // scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+//   }
+// });
 
 
 const containers = gsap.utils.toArray(".text-container");
@@ -146,18 +146,6 @@ containers.forEach((container, index) => {
       0.9
     );
   }
-  else {
-    tl2.from(`.text${index+1}`, {
-      // autoAlpha: 0
-      x: 500
-    }).to(
-      `.text${index+1}`,
-      {
-        autoAlpha: 0
-      },
-      0.9
-    );
-  }
 });
 
 let tl3 = gsap.timeline({
@@ -177,34 +165,99 @@ tl3.to("#shadow", {
   duration: 0.2
 })
 
-let tl4 = gsap.timeline({
-  scrollTrigger: {
-    // markers: true,
-    trigger: ".last-text",
-    start: "top bottom", 
-    end: "bottom",
-    toggleActions: "play none none reverse"
-  }
-});
+// let tl4 = gsap.timeline({
+//   scrollTrigger: {
+//     // markers: true,
+//     trigger: ".last-text",
+//     start: "top bottom", 
+//     end: "bottom",
+//     toggleActions: "play none none reverse"
+//   }
+// });
 
-tl4.to("#mobile-image", {
-  autoAlpha: 0,
-  duration: 0.2
-})
+// tl4.to("#mobile-image", {
+//   autoAlpha: 0,
+//   duration: 0.2
+// })
 
 var rotate = gsap.timeline({
   scrollTrigger:{
     trigger: ".image-wrap",
-    pin: true,
-    scrub:0.2,
+    pin: false,
+    scrub: 0.2,
     start: 'top top',
-    end:'+=1000'
+    end:'+=500'
   }
 })
 .to('#mobile-image img', {
-  y: -148,
   x: -50,
+  y:-180,
   rotation: -35.5,
-  duration:1, ease:'none',
+  duration:1, ease:'none'
 })
+
+var fade = gsap.timeline({
+  scrollTrigger:{
+    trigger: ".intro-container",
+    pin: false,
+    scrub: 0.2,
+    start: 'top center',
+    end:'+=500'
+  }
+})
+.to("#shadow", {
+  autoAlpha: 0
+})
+.to('#mobile-image img', {
+  autoAlpha: 0
+})
+
+// var fadeIn = gsap.timeline({
+//   scrollTrigger:{
+//     trigger: ".intro-container",
+//     pin: false,
+//     scrub: 0.2,
+//     start: 'top top',
+//     end:'+=300',
+//     markers: true
+//   }
+// })
+// .from('.text1', {
+//   autoAlpha: 0
+// })
+// .from('.text2', {
+//   autoAlpha: 0
+// })
+// .from('.text3', {
+//   autoAlpha: 0
+// })
+// .from('.text4', {
+//   autoAlpha: 0
+// })
+
+if(window.innerWidth <= 654) {
+const textBlock = gsap.utils.toArray(".card-text");
+textBlock.forEach((container, index) => {
+  let tl2 = gsap.timeline({
+    scrollTrigger: {
+      trigger: container,
+      start: "top center",
+      end: "top 20%",
+      pinSpacing: false,
+      scrub: true
+    }
+  });
+
+    tl2.from(`.text${index+1}`, {
+      autoAlpha: 0
+    }).to(
+      `.text${index+1}`,
+      {
+        autoAlpha: 1
+      },
+      0.9
+    );
+});
+}
+
 
