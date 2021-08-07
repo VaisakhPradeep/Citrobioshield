@@ -146,7 +146,7 @@ containers.forEach((container, index) => {
 
 let tl3 = gsap.timeline({
   scrollTrigger: {
-    markers: true,
+    // markers: true,
     trigger: ".last-text",
     start: "top bottom", 
     end: "bottom",
