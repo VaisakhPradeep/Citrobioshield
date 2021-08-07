@@ -576,6 +576,9 @@ canvas{
     .hero .bg-peel {
         transform: scale(0.4);
     }
+    .intro-spacer {
+        min-height: 400px;
+    }
     .intro-container .text {
         display: none;
     }
@@ -586,9 +589,27 @@ canvas{
         font-size: 1.6rem;
         text-align: center;
     }
+    .intro-content #bg-leaf2 {
+        transform: scale(0.6);
+        bottom: 224px;
+        z-index: -1;
+    }
     .intro-content .card {
         margin: 0 auto;
         width: 100%;
+        padding: 16px;
+        min-height: 200px;
+    }
+    .intro-content .card p {
+        position: absolute;
+        margin: auto;
+        left: 0;
+        right: 0;
+        width: 80%;
+        text-align: center;
+    }
+    .intro-content .card span {
+        display: none;
     }
     .features {
         padding-top: 100px;
@@ -600,19 +621,7 @@ canvas{
     .feature-container {
         width: 100%;
     }
-    .myths-facts-container h2 {
-        font-size: 1.6rem;
-    }
-    .myths-facts-container .card {
-        padding: 16px;
-    }
-    .myth, .fact {
-        display: block;
-    }
-    .myths-facts-container .card:hover .fact {
-        display: block;
-    }
-
+    
 }
 
 @media (max-width: 480px) {

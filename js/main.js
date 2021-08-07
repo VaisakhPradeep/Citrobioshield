@@ -97,28 +97,39 @@ containers.forEach((container, index) => {
     scrollTrigger: {
       trigger: container,
       pin: true,
-      start: "top center",
-      end: "top",
+      start: "top bottom",
+      end: "top 20%",
       pinSpacing: false,
       scrub: true,
       // markers: true
     }
   });
 
-  console.log(index)
-  tl2.from(`.text${index+1}`, {
-    autoAlpha: 0
-  }).to(
-    `.text${index+1}`,
-    {
-      autoAlpha: 1
-    },
-    0.9
-  );
+  if(window.innerWidth > 654) {
+    tl2.from(`.text${index+1}`, {
+      autoAlpha: 0
+    }).to(
+      `.text${index+1}`,
+      {
+        autoAlpha: 1
+      },
+      0.9
+    );
+  }
+  else {
+    tl2.from(`.text${index+1}`, {
+      autoAlpha: 0
+    }).to(
+      `.text${index+1}`,
+      {
+        autoAlpha: 0
+      },
+      0.9
+    );
+  }
 });
 
 let tl3 = gsap.timeline({
-  // yes, we can add it to an entire timeline!
   scrollTrigger: {
     // markers: true,
     trigger: ".last-text",
