@@ -13,6 +13,33 @@ body {
     font-size: 16px;
 }
 
+header {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 32px;
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+}
+
+header img {
+    width: 80px;
+}
+
+header .amazon-btn img {
+    width: 170px;
+}
+
+header .amazon-btn:hover img {
+    width: 170px;
+    filter: brightness(1.4)
+}
+
 .container {
     position: relative;
     z-index: 10;
@@ -329,14 +356,14 @@ canvas{
     text-align: center;
 }
 
-.features .amazon-btn img {
+.amazon-btn img {
     transition: 0.3s;
     width: 200px;
     cursor: pointer;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, .1), 0 10px 10px -5px rgba(0, 0, 0, .1) !important;
 }
 
-.features .amazon-btn img:hover {
+.amazon-btn img:hover {
     width: 200px;
     cursor: pointer;
     filter: brightness(0.8)
@@ -538,7 +565,7 @@ canvas{
 @media (max-width: 654px) {
     .hero .main-text {
         justify-content: normal;
-        padding-top: 20%;
+        padding-top: 36%;
         text-align: center;
         padding-left: 0;
         padding-right: 0;
