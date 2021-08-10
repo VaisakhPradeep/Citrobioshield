@@ -291,6 +291,14 @@ canvas{
     color: #EE993A;
 }
 
+.intro-content .heading .sub__text {
+    color: #53504C;
+    font-size: 0.8rem;
+    display: block;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
 .text-container,
 .spacer {
     width: 60%;
@@ -386,7 +394,7 @@ canvas{
     background-color: #F9F7F2;
     padding: 0 20%;
     padding-top: 100px;
-    padding-bottom: 200px;
+    padding-bottom: 100px;
 }
 
 .myths-facts-container h2 {
@@ -483,6 +491,80 @@ canvas{
 
 .faq-container .accordion-container {
     padding: 0 20%;
+}
+
+.floating-nav {
+    position: fixed;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.8);
+    z-index: 101;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.7rem
+}
+
+.floating-nav .amazon-btn img {
+    width: 170px;
+}
+
+.floating-nav .amazon-btn:hover img {
+    width: 170px;
+    filter: brightness(1.4)
+}
+
+.brands {
+    margin-top: 100px;
+}
+
+.brands h2 {
+    font-size: 2.3rem;
+    font-weight: 800;
+    text-align: center;
+    color: #53504C;
+    margin-bottom: 100px;
+}
+
+.brands h2 span {
+    color: #EE993A;
+}
+
+.glide__track {
+    position: relative;
+}
+
+.glide__slide img {
+    width: 100%;
+}
+
+.glide__arrows {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 40px;
+    z-index: 10;
+}
+
+.glide__arrows button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.divider {
+    margin-top: 10rem;
+    opacity: 0.5;
+}
+
+.divider img {
+    display: block;
+    margin: 0 auto;
 }
 
 
@@ -671,9 +753,16 @@ canvas{
     .feature-container {
         width: 100%;
     }
+    .floating-nav .amazon-btn img {
+        width: 120px;
+    }
     
-}
+    .floating-nav .amazon-btn:hover img {
+        width: 120px;
+        filter: brightness(1.4)
+    }
 
-@media (max-width: 480px) {
-
+    .glide__arrows {
+        display: none;
+    }
 }

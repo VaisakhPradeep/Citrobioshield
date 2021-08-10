@@ -5,7 +5,7 @@ const shadow = document.getElementById("shadow");
 const context = canvas.getContext("2d");
 const width = 1080;
 const height = 1400;
-const frameCount = 59;
+const frameCount = 60;
 let imageExtension = 'webp'
 
 // Check webp support
@@ -22,22 +22,59 @@ const currentFrame = index => (
   `./images/sequence/${index.toString()}.${imageExtension}`
 )
 
-const preloadImages = () => {
-  for (let i = 0; i < frameCount; i++) {
-    const img = new Image();
-    img.src = currentFrame(i);
-  }
-};
+// ---------
 
-
-const img = new Image()
-img.src = currentFrame(1);
 canvas.width = width;
 canvas.height = height;
-img.onload = function () {
-  context.clearRect(0, 0, canvas.width, canvas.height);
-  context.drawImage(img, 0, 0);
+
+const images = []
+const bottle = {
+  frame: 0
+};
+
+for (let i = 0; i < frameCount; i++) {
+  const img = new Image();
+  img.src = currentFrame(i);
+  images.push(img);
 }
+
+gsap.to(bottle, {
+  frame: frameCount - 1,
+  snap: "frame",
+  scrollTrigger: {
+    scrub: 0.5,
+    start: "top",
+    end: "+=1500"
+  },
+  onUpdate: render // use animation onUpdate instead of scrollTrigger's onUpdate
+});
+
+images[0].onload = render;
+
+function render() {
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  context.drawImage(images[bottle.frame], 0, 0); 
+}
+
+// ---------
+
+
+// const preloadImages = () => {
+//   for (let i = 0; i < frameCount; i++) {
+//     const img = new Image();
+//     img.src = currentFrame(i);
+//   }
+// };
+
+
+// const img = new Image()
+// img.src = currentFrame(1);
+// canvas.width = width;
+// canvas.height = height;
+// img.onload = function () {
+//   context.clearRect(0, 0, canvas.width, canvas.height);
+//   context.drawImage(img, 0, 0);
+// }
 
 const updateImage = index => {
   img.src = currentFrame(index);
@@ -64,61 +101,62 @@ const moveCanvas = val => {
   }
 }
 
-// const imageTrasition = val => {
-//   let x = 30*(val/1200)
-//   let a = 35.5*(val/1200)
-//   let r = 13*(val/1200)
-//   if(x<=30){
-//     bottleImg.style.top = `${56 - x}%`;
-//   }
-//   if(a<=35.5) {
-//     bottleImg.style.transform = `translate(0%, -50%) rotate(-${a}deg)`;
-//   }
-//   if(r<=13) {
-//     bottleImg.style.right = `${r}%`;
-//   }
-// }
 
-window.addEventListener('scroll', () => {
-  const scrollTop = html.scrollTop;
-  const maxScrollTop = 2000  - window.innerHeight;
-  const scrollFraction = scrollTop / maxScrollTop;
-  const frameIndex = Math.min(
-    frameCount - 1,
-    Math.ceil(scrollFraction * frameCount)
-  );
+// window.addEventListener('scroll', () => {
+//   const scrollTop = html.scrollTop;
+//   const maxScrollTop = 2000  - window.innerHeight;
+//   const scrollFraction = scrollTop / maxScrollTop;
+//   const frameIndex = Math.min(
+//     frameCount - 1,
+//     Math.ceil(scrollFraction * frameCount)
+//   );
 
 
-  changeShadow(frameIndex);
+//   changeShadow(frameIndex);
+//   requestAnimationFrame(() => updateImage(frameIndex + 1))
+// });
 
-  if(window.innerWidth <= 644){
-    // imageTrasition(scrollTop)
-  }
-
-  requestAnimationFrame(() => updateImage(frameIndex + 1))
-});
-
-preloadImages()
-// imageTrasition(0);
-changeShadow(0);
+// preloadImages()
+// changeShadow(0);
 
 
 var scene = document.getElementById('scene');
 var parallaxInstance = new Parallax(scene, {
 });
+new Glide('.glide', {
+  type: 'carousel',
+  startAt: 0,
+  perView: 5,
+  autoplay: 1500,
+  // animationDuration: 3000,
+  // animationTimingFunc: 'linear',
+  animationTimingFunc: 'ease',
+  hoverpause: false,
+  breakpoints: {
+    1024: {
+      perView: 4
+    },
+    654: {
+      perView: 3
+    }
+  }
+}).mount()
 
 
-// let tl = gsap.timeline({
-//   // yes, we can add it to an entire timeline!
-//   scrollTrigger: {
-//     // markers: true,
-//     trigger: ".intro-content",
-//     pin: true, 
-//     start: "top", // when the top of the trigger hits the top of the viewport
-//     end: "+2000", // end after scrolling 500px beyond the start
-//     // scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-//   }
-// });
+
+if(window.innerWidth > 654) {
+let tl = gsap.timeline({
+  // yes, we can add it to an entire timeline!
+  scrollTrigger: {
+    // markers: true,
+    trigger: ".intro-content",
+    pin: true, 
+    start: "top", // when the top of the trigger hits the top of the viewport
+    end: "+2000", // end after scrolling 500px beyond the start
+    // scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+  }
+});
+}
 
 
 const containers = gsap.utils.toArray(".text-container");
@@ -209,6 +247,19 @@ var fade = gsap.timeline({
   autoAlpha: 0
 })
 .to('#mobile-image img', {
+  autoAlpha: 0
+})
+
+var fadeNav = gsap.timeline({
+  scrollTrigger:{
+    trigger: ".features",
+    pin: false,
+    scrub: 0.2,
+    start: 'top center',
+    end: 'top 40%'
+  }
+})
+.from(".floating-nav", {
   autoAlpha: 0
 })
 
