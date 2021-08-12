@@ -275,6 +275,11 @@ canvas{
     background-color: #EE993A;
 }
 
+.intro-content .card .highlight {
+    display: inline;
+    color: #EE993A;
+}
+
 .intro-content .text {
     font-size: 0.875rem;
     font-weight: 400;
