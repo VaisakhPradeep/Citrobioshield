@@ -76,11 +76,11 @@ function render() {
 //   context.drawImage(img, 0, 0);
 // }
 
-const updateImage = index => {
-  img.src = currentFrame(index);
+// const updateImage = index => {
+//   img.src = currentFrame(index);
 
-    context.drawImage(img, 0, 0);
-}
+//     context.drawImage(img, 0, 0);
+// }
 
 const changeShadow = scale => {
   if(scale<=38){
@@ -94,30 +94,30 @@ const changeShadow = scale => {
   }
 }
 
-const moveCanvas = val => {
-  let x = 30*(val/1200)
-  if(x<=30){
-    canvas.style.top = `${56 - x}%`;
-  }
-}
+// const moveCanvas = val => {
+//   let x = 30*(val/1200)
+//   if(x<=30){
+//     canvas.style.top = `${56 - x}%`;
+//   }
+// }
 
 
-// window.addEventListener('scroll', () => {
-//   const scrollTop = html.scrollTop;
-//   const maxScrollTop = 2000  - window.innerHeight;
-//   const scrollFraction = scrollTop / maxScrollTop;
-//   const frameIndex = Math.min(
-//     frameCount - 1,
-//     Math.ceil(scrollFraction * frameCount)
-//   );
+window.addEventListener('scroll', () => {
+  const scrollTop = html.scrollTop;
+  const maxScrollTop = 2000  - window.innerHeight;
+  const scrollFraction = scrollTop / maxScrollTop;
+  const frameIndex = Math.min(
+    frameCount - 1,
+    Math.ceil(scrollFraction * frameCount)
+  );
 
 
-//   changeShadow(frameIndex);
-//   requestAnimationFrame(() => updateImage(frameIndex + 1))
-// });
+  changeShadow(frameIndex);
+  // requestAnimationFrame(() => updateImage(frameIndex + 1))
+});
 
 // preloadImages()
-// changeShadow(0);
+changeShadow(0);
 
 
 var scene = document.getElementById('scene');

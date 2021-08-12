@@ -558,13 +558,28 @@ canvas{
 }
 
 .divider {
-    margin-top: 10rem;
-    opacity: 0.5;
+    margin-top: 2rem;
+    opacity: 0.2;
 }
 
 .divider img {
+    width: 100%;
     display: block;
     margin: 0 auto;
+}
+
+footer {
+    background: #F9F7F2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    font-size: 0.7rem;
+    color: #636363;
+}
+
+footer a {
+    color: #636363;
 }
 
 
@@ -756,13 +771,14 @@ canvas{
     .floating-nav .amazon-btn img {
         width: 120px;
     }
-    
     .floating-nav .amazon-btn:hover img {
         width: 120px;
         filter: brightness(1.4)
     }
-
     .glide__arrows {
         display: none;
+    }
+    footer {
+        display: block;
     }
 }
