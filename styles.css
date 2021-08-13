@@ -577,10 +577,11 @@ footer {
     background: #F9F7F2;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 1rem;
     font-size: 0.7rem;
     color: #636363;
+    text-align: center;
 }
 
 footer a {
@@ -782,8 +783,5 @@ footer a {
     }
     .glide__arrows {
         display: none;
-    }
-    footer {
-        display: block;
     }
 }
