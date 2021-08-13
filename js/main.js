@@ -188,7 +188,7 @@ containers.forEach((container, index) => {
 
 let tl3 = gsap.timeline({
   scrollTrigger: {
-    markers: true,
+    // markers: true,
     trigger: ".features",
     start: "top bottom", 
     end: "bottom",
