@@ -8,14 +8,13 @@ const height = 1400;
 const frameCount = 60;
 let noCanvas = false;
 let isMobile = false;
-let imageExtension = 'webp'
 
 // Check webp support
 Modernizr.on('webp', function (result) {
   if (result) {
-    imageExtension = 'webp'
+    bottleRender('webp');
   } else {
-    imageExtension = 'png'
+    bottleRender('png');
   }
 });
 
@@ -31,10 +30,6 @@ if (window.innerWidth <= 654) {
 }
 
 
-const currentFrame = index => (
-  `./images/sequence/${index.toString()}.${imageExtension}`
-)
-
 // ---------
 
 canvas.width = width;
@@ -45,28 +40,37 @@ const bottle = {
   frame: 0
 };
 
-for (let i = 0; i < frameCount; i++) {
-  const img = new Image();
-  img.src = currentFrame(i);
-  images.push(img);
-}
+const bottleRender = ext => {
 
-gsap.to(bottle, {
-  frame: frameCount - 1,
-  snap: "frame",
-  scrollTrigger: {
-    scrub: 0.5,
-    start: "top",
-    end: "+=1500"
-  },
-  onUpdate: render // use animation onUpdate instead of scrollTrigger's onUpdate
-});
 
-images[0].onload = render;
+const currentFrame = index => (
+  `./images/sequence/${index.toString()}.${ext}`
+)
 
-function render() {
-  context.clearRect(0, 0, canvas.width, canvas.height);
-  context.drawImage(images[bottle.frame], 0, 0);
+  for (let i = 0; i < frameCount; i++) {
+    const img = new Image();
+    img.src = currentFrame(i);
+    images.push(img);
+  }
+
+  gsap.to(bottle, {
+    frame: frameCount - 1,
+    snap: "frame",
+    scrollTrigger: {
+      scrub: 0.5,
+      start: "top",
+      end: "+=1500"
+    },
+    onUpdate: render // use animation onUpdate instead of scrollTrigger's onUpdate
+  });
+
+  images[0].onload = render;
+
+  function render() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.drawImage(images[bottle.frame], 0, 0);
+  }
+
 }
 
 // ---------
