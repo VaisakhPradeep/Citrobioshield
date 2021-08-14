@@ -6,16 +6,27 @@ const context = canvas.getContext("2d");
 const width = 1080;
 const height = 1400;
 const frameCount = 60;
+let noCanvas = true;
+let isMobile = false;
 let imageExtension = 'webp'
 
 // Check webp support
-Modernizr.on('webp', function(result) {
+Modernizr.on('webp', function (result) {
   if (result) {
     imageExtension = 'webp'
   } else {
     imageExtension = 'png'
   }
 });
+
+if (!Modernizr.canvas) {
+  canvas.classList.add(".no-canvas");
+  noCanvas = true;
+}
+
+if (window.innerWidth <= 654) {
+  isMobile = true;
+}
 
 
 const currentFrame = index => (
@@ -53,7 +64,7 @@ images[0].onload = render;
 
 function render() {
   context.clearRect(0, 0, canvas.width, canvas.height);
-  context.drawImage(images[bottle.frame], 0, 0); 
+  context.drawImage(images[bottle.frame], 0, 0);
 }
 
 // ---------
@@ -83,13 +94,13 @@ function render() {
 // }
 
 const changeShadow = scale => {
-  if(scale<=38){
+  if (scale <= 38) {
     shadow.style.transform = `rotate(${38 - scale}deg)`;
     shadow.style.bottom = `${scale}px`;
   }
-  if(window.innerWidth <= 654) {
-    if(scale<=20){
-      shadow.style.top = `${34-scale}%`;
+  if (window.innerWidth <= 654) {
+    if (scale <= 20) {
+      shadow.style.top = `${34 - scale}%`;
     }
   }
 }
@@ -104,7 +115,7 @@ const changeShadow = scale => {
 
 window.addEventListener('scroll', () => {
   const scrollTop = html.scrollTop;
-  const maxScrollTop = 2000  - window.innerHeight;
+  const maxScrollTop = 2000 - window.innerHeight;
   const scrollFraction = scrollTop / maxScrollTop;
   const frameIndex = Math.min(
     frameCount - 1,
@@ -144,18 +155,18 @@ new Glide('.glide', {
 
 
 
-if(window.innerWidth > 654) {
-let tl = gsap.timeline({
-  // yes, we can add it to an entire timeline!
-  scrollTrigger: {
-    // markers: true,
-    trigger: ".intro-content",
-    pin: true, 
-    start: "top", // when the top of the trigger hits the top of the viewport
-    end: "+2000", // end after scrolling 500px beyond the start
-    // scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-  }
-});
+if (!isMobile) {
+  let tl = gsap.timeline({
+    // yes, we can add it to an entire timeline!
+    scrollTrigger: {
+      // markers: true,
+      trigger: ".intro-content",
+      pin: true,
+      start: "top", // when the top of the trigger hits the top of the viewport
+      end: "+2000", // end after scrolling 500px beyond the start
+      // scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+    }
+  });
 }
 
 
@@ -173,11 +184,11 @@ containers.forEach((container, index) => {
     }
   });
 
-  if(window.innerWidth > 654) {
-    tl2.from(`.text${index+1}`, {
+  if (!isMobile) {
+    tl2.from(`.text${index + 1}`, {
       autoAlpha: 0
     }).to(
-      `.text${index+1}`,
+      `.text${index + 1}`,
       {
         autoAlpha: 1
       },
@@ -190,7 +201,7 @@ let tl3 = gsap.timeline({
   scrollTrigger: {
     // markers: true,
     trigger: ".features",
-    start: "top bottom", 
+    start: "top bottom",
     end: "bottom",
     toggleActions: "play none none reverse"
   }
@@ -203,55 +214,99 @@ tl3.to("#shadow", {
   duration: 0.2
 })
 
-// let tl4 = gsap.timeline({
-//   scrollTrigger: {
-//     // markers: true,
-//     trigger: ".last-text",
-//     start: "top bottom", 
-//     end: "bottom",
-//     toggleActions: "play none none reverse"
-//   }
-// });
 
-// tl4.to("#mobile-image", {
-//   autoAlpha: 0,
-//   duration: 0.2
-// })
+if (isMobile) {
+  var rotate = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".image-wrap",
+      pin: false,
+      scrub: 0.2,
+      start: 'top top',
+      end: '+=500'
+    }
+  })
+    .to('#mobile-image img', {
+      x: -50,
+      y: -180,
+      rotation: -35.5,
+      duration: 1, ease: 'none'
+    })
 
-var rotate = gsap.timeline({
-  scrollTrigger:{
-    trigger: ".image-wrap",
-    pin: false,
-    scrub: 0.2,
-    start: 'top top',
-    end:'+=500'
-  }
-})
-.to('#mobile-image img', {
-  x: -50,
-  y:-180,
-  rotation: -35.5,
-  duration:1, ease:'none'
-})
+  var fade = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".intro-container",
+      pin: false,
+      scrub: 0.2,
+      start: 'top center',
+      end: '+=500'
+    }
+  })
+    .to("#shadow", {
+      autoAlpha: 0
+    })
+    .to('#mobile-image img', {
+      autoAlpha: 0
+    })
 
-var fade = gsap.timeline({
-  scrollTrigger:{
-    trigger: ".intro-container",
-    pin: false,
-    scrub: 0.2,
-    start: 'top center',
-    end:'+=500'
-  }
-})
-.to("#shadow", {
-  autoAlpha: 0
-})
-.to('#mobile-image img', {
-  autoAlpha: 0
-})
+  const textBlock = gsap.utils.toArray(".card-text");
+  textBlock.forEach((container, index) => {
+    let tl2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: container,
+        start: "top center",
+        end: "top 20%",
+        pinSpacing: false,
+        scrub: true
+      }
+    });
+
+    tl2.from(`.text${index + 1}`, {
+      autoAlpha: 0
+    }).to(
+      `.text${index + 1}`,
+      {
+        autoAlpha: 1
+      },
+      0.9
+    );
+  });
+}
+
+
+if (noCanvas) {
+  var rotate = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".image-wrap",
+      pin: false,
+      scrub: 0.2,
+      start: 'top top',
+      end: '+=500'
+    }
+  })
+    .to('#mobile-image img', {
+      x: -150,
+      y: -100,
+      rotation: -35.5,
+      duration: 1, ease: 'none'
+    })
+
+  var fade = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".features",
+      pin: false,
+      scrub: 0.2,
+      start: 'top bottom',
+      end: '+=500'
+    }
+  })
+    .to('#mobile-image img', {
+      autoAlpha: 0
+    })
+}
+
 
 var fadeNav = gsap.timeline({
-  scrollTrigger:{
+  scrollTrigger: {
     trigger: ".features",
     pin: false,
     scrub: 0.2,
@@ -259,56 +314,8 @@ var fadeNav = gsap.timeline({
     end: 'top 40%'
   }
 })
-.from(".floating-nav", {
-  autoAlpha: 0
-})
-
-// var fadeIn = gsap.timeline({
-//   scrollTrigger:{
-//     trigger: ".intro-container",
-//     pin: false,
-//     scrub: 0.2,
-//     start: 'top top',
-//     end:'+=300',
-//     markers: true
-//   }
-// })
-// .from('.text1', {
-//   autoAlpha: 0
-// })
-// .from('.text2', {
-//   autoAlpha: 0
-// })
-// .from('.text3', {
-//   autoAlpha: 0
-// })
-// .from('.text4', {
-//   autoAlpha: 0
-// })
-
-if(window.innerWidth <= 654) {
-const textBlock = gsap.utils.toArray(".card-text");
-textBlock.forEach((container, index) => {
-  let tl2 = gsap.timeline({
-    scrollTrigger: {
-      trigger: container,
-      start: "top center",
-      end: "top 20%",
-      pinSpacing: false,
-      scrub: true
-    }
-  });
-
-    tl2.from(`.text${index+1}`, {
-      autoAlpha: 0
-    }).to(
-      `.text${index+1}`,
-      {
-        autoAlpha: 1
-      },
-      0.9
-    );
-});
-}
+  .from(".floating-nav", {
+    autoAlpha: 0
+  })
 
 

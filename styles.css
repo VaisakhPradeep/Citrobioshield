@@ -49,7 +49,7 @@ header .amazon-btn:hover img {
     visibility: visible;
 }
 
-canvas{
+canvas {
     position: fixed;
     top: 50%;
     right: 0%;
@@ -57,6 +57,17 @@ canvas{
     max-width: 100vw;
     max-height: 100vh;
     z-index: 100;
+}
+
+
+.no-canvas {
+    display: none;
+}
+
+.no-canvas + #mobile-image img {
+    display: block;
+    width: 40%;
+    top: 10%;
 }
 
 #mobile-image img{
