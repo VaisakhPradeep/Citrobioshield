@@ -6,7 +6,7 @@ const context = canvas.getContext("2d");
 const width = 1080;
 const height = 1400;
 const frameCount = 60;
-let noCanvas = true;
+let noCanvas = false;
 let isMobile = false;
 let imageExtension = 'webp'
 
@@ -19,10 +19,12 @@ Modernizr.on('webp', function (result) {
   }
 });
 
+// Check canvas support
 if (!Modernizr.canvas) {
   canvas.classList.add(".no-canvas");
   noCanvas = true;
 }
+
 
 if (window.innerWidth <= 654) {
   isMobile = true;
